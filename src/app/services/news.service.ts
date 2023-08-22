@@ -7,7 +7,6 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class NewsService {
-  private apiKey = '01e6e3ee4b8848dab6bab439ca562ef8';
   private apiUrl = 'https://newsapi.org/v2/top-headlines?';
   private requestCount = 0;
 
