@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, 'arial';
+}
+
+:root {
+  font-size: 62.5%;
+  --background_color: #FBFBFB;
+}
+
+
+body {
+  background-color: var(--background_color);
+  padding: 0% 10%;
+}

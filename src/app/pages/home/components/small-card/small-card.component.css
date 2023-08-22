@@ -1,0 +1,49 @@
+@media screen and (min-width: 1200px) {
+    .small-card__container {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        width: 50rem;
+        height: 53rem;
+        transition: 200ms;
+        text-decoration: none;
+    }
+
+  
+    .small-card__container:hover {
+      transform: scale(1.05);
+    }
+
+    .small-card-image__container > img {
+        width: 50rem;
+        height: 30rem;
+        border-radius: 0.6rem 0.6rem 0rem 0rem;
+    }
+
+    .small-card-informations {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 2rem;
+      gap: 2.5rem;
+
+      box-shadow: 0px 14px 15px -3px rgba(0,0,0,0.1);
+      border-radius: 0rem 0rem 0.6rem 0.6rem;
+    }
+
+    .small-card-title > h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #263238;
+    }
+
+    .small-card-descriptions > p {
+      font-size: 1.4rem;
+      color: #718096;
+    }
+
+    .small-card-data__container > p {
+      font-size: 1.2rem;
+      color: #718096;
+    }
+}

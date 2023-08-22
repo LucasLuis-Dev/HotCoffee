@@ -1,0 +1,58 @@
+@media screen and (min-width:1200px) {
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 7rem;
+  }
+
+  .small-card__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 3rem;
+    column-gap: 3rem;
+
+  }
+
+  .more-news__container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin-top: 5rem;
+  }
+
+  .more-news__container > button {
+    display: flex;
+    gap: 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1.3rem 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #573D06;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+
+    cursor: pointer;
+    transition: 200ms;
+  }
+
+  .more-news__container > button:hover {
+    transform: scale(1.05);
+  }
+
+  .more-news__container > button > svg {
+    width: 2rem;
+  }
+
+  .footer__container {
+    margin-top: 7rem;
+  }
+
+
+
+}

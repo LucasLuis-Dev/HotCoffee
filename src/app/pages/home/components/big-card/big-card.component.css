@@ -1,0 +1,40 @@
+@media screen and (min-width: 1500px) {
+
+  .big-card__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #F7FAFC;
+    width: 100%;
+    height: 60rem;
+  }
+
+  .big-card-informations {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12rem;
+
+    border-radius: 0.6rem 0rem 0rem 0.6rem;
+  }
+
+  .big-card-title__container > h2 {
+
+    font-size: 4.5rem;
+  }
+
+  .big-card-description__container > p {
+    font-size: 2.4rem;
+  }
+
+  .big-card-data__container > p {
+    font-size: 1.7rem;
+    color: #718096;
+  }
+
+  .big-card-image__container > img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 0rem 0.6rem 0.6rem 0rem;
+  }
+}

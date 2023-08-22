@@ -1,0 +1,45 @@
+
+@media screen and (min-width: 1500px) {
+
+    .header__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        width: 100%;
+
+
+
+    }
+
+    .header-title__container {
+        display: flex;
+        flex-direction: column;
+
+        gap: 1rem;
+        width: 80%;
+    }
+
+    .header-title__container > h1 {
+        font-size: 6rem;
+        font-weight: 700;
+        color: #263238;
+    }
+
+    .header-title__container > p {
+        font-size: 3rem;
+        font-weight: 500;
+        color: #63757e;
+    }
+
+    .header-image__container {
+        text-align: right;
+    }
+
+
+    .header-image__container > img {
+        width: 80%;
+    }
+
+}
