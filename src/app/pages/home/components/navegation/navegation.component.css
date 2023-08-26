@@ -17,15 +17,21 @@
 
     .nav-search__container > input {
         display: flex;
-        padding: 0.5rem 2.5rem;
+        padding: 1rem 3.5rem;
+        padding-left: 4rem;
         font-size: 1.6rem;
         border-radius: 1rem;
-        border-color: #454444;
+        border: none;
+        background-color: rgb(230, 230, 230);
         background-image: url('../../../../../assets/images/magnifying-glass-solid.svg');
         background-repeat: no-repeat;
         background-size: 1.7rem;
         background-position: left;
-        background-position-x: 2%;
+        background-position-x: 4%;
+    }
+
+    .nav-search__container > input::placeholder {
+        text-align: center;
     }
 
     .nav-links__container {

@@ -1,1 +1,8 @@
-<p>search works!</p>
+<div class="search__container">
+    <section class="small-card__container" >
+        <app-small-card *ngFor="let new of newsResults" [new]="new"></app-small-card>
+    </section>
+
+    <app-footer></app-footer>
+    
+</div>

@@ -17,7 +17,7 @@ export class NavegationComponent {
     // Aqui você pode implementar a lógica de busca com base em this.searchQuery
     // Por exemplo, você pode navegar para uma rota de resultados de pesquisa com queryParams
     // Ou pode executar uma chamada a uma API de pesquisa
-    this.router.navigate(['/resultado-pesquisa', this.searchQuery]);
+    this.router.navigate(['/search'], { queryParams: { searchQuery: this.searchQuery}});
     console.log('Pesquisando por:', this.searchQuery);
   }
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class NewsService {
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.apiKey}`
+      'Authorization': `Bearer ${environment.API_KEY}`
     });
 
     return this.http.get<any>(this.apiUrl, { headers, params: {  country, category, pageSize: pageSize.toString(), page: page.toString()} })
@@ -32,26 +33,4 @@ export class NewsService {
         })
       );
   }
-
-
-  searchNews(q:string = "", pageSize: number = 5) {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.apiKey}`
-    });
-
-    return this.http.get<any>(this.apiUrl, { headers, params: { q, pageSize: pageSize.toString() } })
-      .pipe(
-        map(data => {
-          return data.articles;
-        }),
-        catchError(error => {
-          return throwError('Erro na requisição');
-        })
-      );
-  }
-
-
-
-
-
 }

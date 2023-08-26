@@ -6,19 +6,22 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
+import { SearchModule } from './pages/search/search.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SearchComponent,
-
+  ],
+  exports: [
+    HomeModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    SearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -27,7 +27,6 @@ import { FooterComponent } from './components/footer/footer.component';
     SmallCardComponent,
     BigCardComponent,
     FooterComponent,
-
   ],
   imports: [
     CommonModule,

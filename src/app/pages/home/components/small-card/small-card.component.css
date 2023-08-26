@@ -2,8 +2,8 @@
     .small-card__container {
         display: grid;
         grid-template-rows: 1fr 1fr;
-        width: 50rem;
-        height: 53rem;
+        width: 45rem;
+        height: 50rem;
         transition: 200ms;
         text-decoration: none;
     }
@@ -14,8 +14,8 @@
     }
 
     .small-card-image__container > img {
-        width: 50rem;
-        height: 30rem;
+        width: 45rem;
+        height: 25rem;
         border-radius: 0.6rem 0.6rem 0rem 0rem;
     }
 

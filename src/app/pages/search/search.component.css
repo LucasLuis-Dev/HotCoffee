@@ -1,0 +1,15 @@
+@media screen and (min-width: 1200px) {
+    .search__container {
+        display: flex;
+        padding: 10rem 0%;
+    }
+
+    .small-card__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 3rem;
+        width: 100%;
+        column-gap: 3rem;
+    
+      }
+}
