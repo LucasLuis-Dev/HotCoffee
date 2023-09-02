@@ -1,4 +1,45 @@
 
+.header__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    width: 100%;
+    padding-bottom: 3rem;
+
+}
+
+.header-title__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.header-title__container > h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #263238;
+}
+
+.header-title__container > p {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #63757e;
+}
+
+.header-image__container {
+    text-align: right;
+}
+
+
+.header-image__container > img {
+    width: 100%;
+}
+
+
+
 @media screen and (min-width: 1500px) {
 
     .header__container {

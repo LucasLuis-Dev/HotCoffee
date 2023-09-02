@@ -4,7 +4,6 @@ import { Observable, throwError, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -13,7 +12,7 @@ export class newsSearchService {
 
     constructor(private http: HttpClient) { }
 
-    searchNews(q:string = "", pageSize: number = 5) {
+    searchNews(q:string = "", pageSize: number = 50) {
         const headers = new HttpHeaders({
         'Authorization': `Bearer ${environment.API_KEY}`
         });

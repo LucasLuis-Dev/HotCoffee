@@ -23,10 +23,13 @@ export class SearchComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const searchQuery = params['searchQuery'];
       if (searchQuery) {
-        this.newsSearchService.searchNews(searchQuery).subscribe(results => {
+        this.newsSearchService.searchNews(searchQuery, 100).subscribe(results => {
           this.newsResults = results;
-          for (let news of this.newsResults) {
-            news.publishedAt = format(this.data, 'dd MMMM yyyy', { locale: enUS });
+          for (let i = 0; i < this.newsResults.length; i++) {
+            this.newsResults[i].publishedAt = format(this.data, 'dd MMMM yyyy', { locale: enUS });
+            if (this.newsResults[i].urlToImage === null) {
+              this.newsResults.splice(i,1)
+            }
           }
           console.log(this.newsResults)
         })

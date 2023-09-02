@@ -1,3 +1,63 @@
+.nav__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+}
+
+.nav-logo_container > a > img {
+  width: 25rem;
+  display: none;
+}
+
+.nav-search__container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-search__container > input {
+    display: flex;
+    padding: 1rem 3.5rem;
+    width: 100%;
+    padding-left: 4rem;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: rgb(230, 230, 230);
+    background-image: url('../../../../../assets/images/magnifying-glass-solid.svg');
+    background-repeat: no-repeat;
+    background-size: 1.7rem;
+    background-position: left;
+    background-position-x: 4%;
+}
+
+.nav-search__container > input::placeholder {
+    text-align: center;
+}
+
+.nav-links__container {
+    display: none;
+    flex-direction: row;
+    width: 10%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links__container > a > svg {
+    width: 4rem;
+    height: 4rem;
+    fill: #573D06;
+    transition: 200ms
+}
+
+.nav-links__container > a > svg:hover {
+    transform: scale(1.1);
+}
+
 
 @media screen and (min-width: 1500px) {
 

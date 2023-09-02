@@ -29,10 +29,14 @@ export class HomeComponent implements OnInit {
           if(count > 5) {
             break
           } else {
-            newsItem.publishedAt = format(this.data, 'dd MMMM yyyy', { locale: enUS });
-            this.newsDisplayed.push(newsItem)
-            this.newsCache.splice(count,1)
-            console.log(this.newsCache);
+           
+            if (newsItem.urlToImage !== null) {
+              newsItem.publishedAt = format(this.data, 'dd MMMM yyyy', { locale: enUS });
+              this.newsDisplayed.push(newsItem)
+              this.newsCache.splice(count,1)
+              console.log(this.newsCache);
+            }
+            
           }
           count++
         }
@@ -50,10 +54,12 @@ export class HomeComponent implements OnInit {
       if(count > 5) {
         break
       } else {
-        newsItem.publishedAt = format(this.data, 'dd MMMM yyyy', { locale: enUS });
-        this.newsDisplayed.push(newsItem)
-        this.newsCache.splice(count,1)
-        console.log(this.newsCache);
+        if (newsItem.urlToImage !== null) {
+          newsItem.publishedAt = format(this.data, 'dd MMMM yyyy', { locale: enUS });
+          this.newsDisplayed.push(newsItem)
+          this.newsCache.splice(count,1)
+          console.log(this.newsCache);
+        }
       }
       count++
     }
