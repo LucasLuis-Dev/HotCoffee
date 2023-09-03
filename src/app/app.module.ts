@@ -7,12 +7,15 @@ import { HomeModule } from './pages/home/home.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { SearchModule } from './pages/search/search.module';
+import { NavegationComponent } from './components/navegation/navegation.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    NavegationComponent
   ],
   exports: [
     HomeModule
@@ -21,7 +24,8 @@ import { SearchModule } from './pages/search/search.module';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
-    SearchModule
+    SearchModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

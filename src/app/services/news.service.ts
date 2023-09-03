@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 export class NewsService {
   private apiUrl = 'https://newsapi.org/v2/top-headlines?';
   private requestCount = 0;
+  private API_KEY = "01e6e3ee4b8848dab6bab439ca562ef8"
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +22,7 @@ export class NewsService {
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${environment.API_KEY}`
+      'Authorization': `Bearer ${this.API_KEY}`
     });
 
     return this.http.get<any>(this.apiUrl, { headers, params: {  country, category, pageSize: pageSize.toString(), page: page.toString()} })
