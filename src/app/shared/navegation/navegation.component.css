@@ -108,14 +108,21 @@
       visibility: visible;
     }
 
-    .nav-search__container > input:focus {
+    .nav-search__container > input:focus,
+    .nav-search__container > input:valid {
       width: 100%;
       background-position: left;
-      background-position-x: 2%;
-      padding-left: 3rem;
+      background-position-x: 3%;
+      padding-left: 3.5rem;
     }
 
     .nav-search__container > input::placeholder {
+      content: '';
+      font-size: 1.6rem;
+      visibility: visible;
+    }
+
+    .nav-search__container > input:valid::placeholder {
       content: '';
       font-size: 1.6rem;
       visibility: visible;

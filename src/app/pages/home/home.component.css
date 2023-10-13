@@ -1,7 +1,38 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: 0rem;
+  gap: 2rem;
+}
+
+.filter__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter-title {
+  font-size: 1.78rem;
+  color: #263238;
+}
+
+.filter-select {
+  display: flex;
+  width: 100%;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #573D06;
+  background-image: url('../../../assets/images/arrow-down-sign-to-navigate.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-position-x: 95%;
+  background-size: 2rem;
+  appearance: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.4rem;
 }
 
 .small-card__container {
@@ -14,6 +45,14 @@ main {
 
 .small-card {
   width: 100%;
+}
+
+.loader__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 0;
 }
 
 .more-news__container {
@@ -77,7 +116,42 @@ main {
   main {
     display: flex;
     flex-direction: column;
-    gap: 7rem;
+    gap: 3rem;
+  }
+
+  .filter__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0rem;
+    flex-direction: row;
+  }
+
+  .filter-title {
+    font-size: 2.7rem;
+    color: #263238;
+  }
+
+  .filter-select {
+    display: flex;
+    padding: 1.5rem;
+    width: 20rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #573D06;
+    background-image: url('../../../assets/images/arrow-down-sign-to-navigate.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position-x: 95%;
+    background-size: 2rem;
+    appearance: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.7rem;
+  }
+
+  .filter-select > option {
+    font-size: 1.6rem;
   }
 
   .small-card__container {
@@ -89,8 +163,17 @@ main {
 
   }
 
-  .small-card {
+  .small-card{
     width: 100%;
+    padding: 1rem;
+  }
+
+  .small-card:nth-child(3n) {
+    padding-right: 0;
+  }
+
+  .small-card:nth-child(3n - 2) {
+    padding-left: 0;
   }
 
   .more-news__container {

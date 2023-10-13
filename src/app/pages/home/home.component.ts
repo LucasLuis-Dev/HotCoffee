@@ -11,32 +11,44 @@ export class HomeComponent implements OnInit {
   newsDisplayed: any[] = [];
   newsCache: any[] = [];
   page: string = '';
+  selectedCategory: string = 'technology';
+  isLoading: boolean = false;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     if (this.newsDisplayed.length === 0) {
-      this.loadMoreNews();
+      this.loadMoreNews('',this.selectedCategory);
       console.log('requisição feita')
     }
   }
 
-  loadMoreNews(page: string = '') {
+  onCategoryChange() {
+    console.log(this.selectedCategory);
+    this.newsCache = []
+    this.newsDisplayed = []
+    this.loadMoreNews('',this.selectedCategory);
+
+  }
+
+  loadMoreNews(page: string = '', category: string) {
+    this.isLoading = true;
     if (page === '') {
-      this.dataService.fetchData('br', 'technology').subscribe(
+      this.dataService.fetchData('br', category).subscribe(
         (news: any) => {
           console.log(news)
           this.page = news.nextPage
           this.newsCache = news.results;
 
           this.filterAndMapNews();
+          this.isLoading = false;
         },
         error => {
           console.error(error);
         }
       );
     } else {
-      this.dataService.fetchData('br', 'technology', page).subscribe(
+      this.dataService.fetchData('br', category, page).subscribe(
         (news: any) => {
           console.log(news)
           this.page = news.nextPage
@@ -73,6 +85,6 @@ export class HomeComponent implements OnInit {
   }
 
   moreNews() {
-    this.loadMoreNews(this.page);
+    this.loadMoreNews(this.page, this.selectedCategory);
   }
 }

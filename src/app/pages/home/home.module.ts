@@ -10,17 +10,20 @@ import { StretchedCardComponent } from './components/stretched-card/stretched-ca
 import { BigCardComponent } from './components/big-card/big-card.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
   HeaderComponent,
   StretchedCardComponent,
   BigCardComponent,
+  LoaderComponent,
   ],
   exports: [
     HeaderComponent,
     StretchedCardComponent,
     BigCardComponent,
+    LoaderComponent
 
   ],
   imports: [

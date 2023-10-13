@@ -7,9 +7,28 @@
 
   <main  >
 
+    <div class="filter__container">
+      <h2 class="filter-title">Categoria das Noticias:</h2>
+
+      <select class="filter-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+        <option value="technology" selected>Tecnologia</option>
+        <option value="sports">Esportes</option>
+        <option value="entertainment">Entretenimento</option>
+        <option value="politics">Política</option>
+        <option value="science">Ciência</option>
+        <option value="health">Saúde</option>
+        <option value="world">Mundo</option>
+        <option value="business">Negócios</option>
+      </select>
+    </div>
+
     <section class="small-card__container" >
       <app-small-card class="small-card" *ngFor="let new of newsDisplayed" [new]="new"></app-small-card>
     </section>
+
+    <div *ngIf="isLoading" class="loader__container">
+      <app-loader></app-loader>
+    </div>
 
     <div class="more-news__container">
       <button class="more-news-button" *ngIf="page != null" (click)="moreNews()">Veja Mais
