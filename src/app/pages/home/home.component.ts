@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService} from '../../services/news.service'
-import { format } from 'date-fns';
-import { ptBR, enUS } from 'date-fns/locale';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -12,59 +10,69 @@ export class HomeComponent implements OnInit {
 
   newsDisplayed: any[] = [];
   newsCache: any[] = [];
-  page: number = 0;
-  data: Date = new Date();
-  constructor(private newsService: NewsService) { }
+  page: string = '';
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-   this.loadMoreNews()
+    if (this.newsDisplayed.length === 0) {
+      this.loadMoreNews();
+      console.log('requisição feita')
+    }
   }
 
-  loadMoreNews() {
-    this.newsService.getNews('tech','us','technology', 100, this.page).subscribe(
-      news=> {
-        this.newsCache = news;
-        let count: number = 0
-        for(let newsItem of this.newsCache) {
-          if(count > 5) {
-            break
-          } else {
-           
-            if (newsItem.urlToImage !== null) {
-              newsItem.publishedAt = format(this.data, 'dd MMMM yyyy', { locale: enUS });
-              this.newsDisplayed.push(newsItem)
-              this.newsCache.splice(count,1)
-              console.log(this.newsCache);
-            }
-            
-          }
-          count++
+  loadMoreNews(page: string = '') {
+    if (page === '') {
+      this.dataService.fetchData('br', 'technology').subscribe(
+        (news: any) => {
+          console.log(news)
+          this.page = news.nextPage
+          this.newsCache = news.results;
+
+          this.filterAndMapNews();
+        },
+        error => {
+          console.error(error);
         }
-        this.page ++;
-      },
-      error => {
-        console.error(error);
+      );
+    } else {
+      this.dataService.fetchData('br', 'technology', page).subscribe(
+        (news: any) => {
+          console.log(news)
+          this.page = news.nextPage
+          this.newsCache = news.results;
+
+          this.filterAndMapNews();
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
+  }
+
+  filterAndMapNews() {
+    this.newsCache = this.newsCache.filter(newItem => {
+
+      return !(newItem.image_url && newItem.image_url.endsWith('.gif'));
+    });
+
+    this.newsCache = this.newsCache.map(newItem => {
+      if (newItem.description.length > 0) {
+        const firstDotIndex = newItem.description.indexOf('.');
+
+        if (firstDotIndex !== -1) {
+          newItem.description = newItem.description.substring(0, firstDotIndex + 1);
+        }
       }
-    );
+      return newItem;
+    });
+
+
+    this.newsDisplayed = [...this.newsDisplayed, ...this.newsCache];
   }
 
   moreNews() {
-    let count: number = 0
-    for(let newsItem of this.newsCache) {
-      if(count > 5) {
-        break
-      } else {
-        if (newsItem.urlToImage !== null) {
-          newsItem.publishedAt = format(this.data, 'dd MMMM yyyy', { locale: enUS });
-          this.newsDisplayed.push(newsItem)
-          this.newsCache.splice(count,1)
-          console.log(this.newsCache);
-        }
-      }
-      count++
-    }
+    this.loadMoreNews(this.page);
   }
 }
-
-
-

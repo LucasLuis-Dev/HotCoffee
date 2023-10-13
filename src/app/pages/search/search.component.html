@@ -1,8 +1,13 @@
 <div class="search__container">
-    <section class="small-card__container" >
-        <app-small-card *ngFor="let new of newsResults" [new]="new"></app-small-card>
-    </section>
 
-    <app-footer></app-footer>
-    
+  <div class="search-title__container">
+    <h1>Resultados de Busca para: {{ searchQuery }}</h1>
+  </div>
+
+
+  <div class="search-results__container">
+    <app-small-card class="small-card" *ngFor="let new of searchResults" [new]="new"></app-small-card>
+  </div>
+
+  <app-footer></app-footer>
 </div>

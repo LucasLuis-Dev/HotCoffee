@@ -1,7 +1,9 @@
-<a href={{new.url}} target="_blank" class="small-card__container">
+
+<div class="small-card__container">
+  <a href={{new.link}} target="_blank" class="small-card-link__container">
 
     <div class="small-card-image__container">
-        <img src={{new.urlToImage}} alt="">
+        <img src={{new.image_url}} alt="">
     </div>
 
     <div class="small-card-informations">
@@ -20,8 +22,9 @@
 
         <div class="small-card-data__container">
             <p>
-                {{new.publishedAt}}
+                {{new.pubDate}}
             </p>
         </div>
     </div>
 </a>
+</div>

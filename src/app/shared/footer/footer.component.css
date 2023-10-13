@@ -3,21 +3,22 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 3rem 0rem;
+  align-items: center;
+  padding-top: 3rem;
 
   border-top: 2px solid #E2E2E2;
 }
 
 .footer-informations__container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .footer-informations__container > h3 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .footer-informations__container > p {
@@ -28,7 +29,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .footer-links__container > a > svg {
@@ -40,7 +41,6 @@
 .footer-links__container > a > svg:hover {
   transform: scale(1.1);
 }
-
 
 @media screen and (min-width: 1500px) {
   .footer__container {

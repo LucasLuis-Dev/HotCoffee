@@ -1,31 +1,39 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+}
+
 .small-card__container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 2.5rem;
+  grid-auto-flow: row;
+  row-gap: 1.4rem;
+}
 
+.small-card {
+  width: 100%;
 }
 
 .more-news__container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
-.more-news__container > button {
+.more-news-button {
   display: flex;
   gap: 1rem;
   text-align: center;
   align-items: center;
   justify-content: center;
 
-  padding: 1.3rem 1.5rem;
+  padding: 1rem 1.3rem;
   border: none;
   border-radius: 1rem;
   background-color: #573D06;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: white;
 
@@ -33,13 +41,35 @@
   transition: 200ms;
 }
 
-.more-news__container > button:hover {
+.more-news-button:hover {
   transform: scale(1.05);
 }
 
-.more-news__container > button > svg {
+.more-news-button > svg {
   width: 2rem;
+  fill: white;
 }
+
+.more-news-information-button {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 1.3rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #573D06;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.footer__container {
+  margin-top: 2rem;
+}
+
+
 
 
 @media screen and (min-width:1200px) {
@@ -53,10 +83,14 @@
   .small-card__container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 3rem;
     width: 100%;
-    column-gap: 3rem;
+    grid-auto-flow: row;
+    row-gap: 3rem;
 
+  }
+
+  .small-card {
+    width: 100%;
   }
 
   .more-news__container {
@@ -64,10 +98,9 @@
     justify-content: flex-end;
     align-items: center;
 
-    margin-top: 5rem;
   }
 
-  .more-news__container > button {
+  .more-news-button {
     display: flex;
     gap: 1rem;
     text-align: center;
@@ -86,16 +119,32 @@
     transition: 200ms;
   }
 
-  .more-news__container > button:hover {
+  .more-news-button:hover {
     transform: scale(1.05);
   }
 
-  .more-news__container > button > svg {
+  .more-news-button > svg {
     width: 2rem;
+    fill: white;
+  }
+
+  .more-news-information-button {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1.3rem 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #573D06;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
   }
 
   .footer__container {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
 

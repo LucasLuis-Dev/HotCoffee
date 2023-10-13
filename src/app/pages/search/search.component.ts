@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { newsSearchService } from 'src/app/services/newsSearch.service';
-import { format } from 'date-fns';
-import { ptBR, enUS } from 'date-fns/locale';
-
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-search',
@@ -11,29 +8,50 @@ import { ptBR, enUS } from 'date-fns/locale';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  newsResults: any[] = [];
-  data: Date = new Date();
+  searchQuery: string = '';
+  searchResults: any[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private newsSearchService: newsSearchService
-  ) {}
+  constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const searchQuery = params['searchQuery'];
-      if (searchQuery) {
-        this.newsSearchService.searchNews(searchQuery, 100).subscribe(results => {
-          this.newsResults = results;
-          for (let i = 0; i < this.newsResults.length; i++) {
-            this.newsResults[i].publishedAt = format(this.data, 'dd MMMM yyyy', { locale: enUS });
-            if (this.newsResults[i].urlToImage === null) {
-              this.newsResults.splice(i,1)
-            }
-          }
-          console.log(this.newsResults)
-        })
-      }
-    })
+    // Obter o parâmetro 'query' da rota
+    this.route.params.subscribe(params => {
+      this.searchQuery = params['query'];
+
+      this.search();
+    });
   }
+
+  search() {
+
+      this.dataService.fetchData('br,us', '', '' , this.searchQuery).subscribe(
+        (news: any) => {
+          console.log(news)
+          this.searchResults = news.results;
+          this.filterAndMapNews();
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
+
+
+    filterAndMapNews() {
+      this.searchResults = this.searchResults.filter(newItem => {
+
+        return !(newItem.image_url && newItem.image_url.endsWith('.gif'));
+      });
+
+      this.searchResults = this.searchResults.map(newItem => {
+        if (newItem.description.length > 0) {
+          const secondDotIndex = newItem.description.indexOf('.', newItem.description.indexOf('.') + 1);
+
+          if (secondDotIndex !== -1) {
+            newItem.description = newItem.description.substring(0, secondDotIndex + 1);
+          }
+        }
+        return newItem;
+      });
+    }
 }

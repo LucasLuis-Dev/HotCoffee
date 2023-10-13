@@ -5,30 +5,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/header/header.component';
-import { NavegationComponent } from '../../components/navegation/navegation.component';
+import { NavegationComponent } from '../../shared/navegation/navegation.component';
 import { StretchedCardComponent } from './components/stretched-card/stretched-card.component';
-import { SmallCardComponent } from './components/small-card/small-card.component';
 import { BigCardComponent } from './components/big-card/big-card.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { FooterComponent } from '../../shared/footer/footer.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
   HeaderComponent,
   StretchedCardComponent,
-  SmallCardComponent,
   BigCardComponent,
-  FooterComponent,
   ],
   exports: [
     HeaderComponent,
     StretchedCardComponent,
-    SmallCardComponent,
     BigCardComponent,
-    FooterComponent,
+
   ],
   imports: [
     CommonModule,
     HttpClientModule,
+    BrowserModule,
+    SharedModule,
+    FormsModule
   ],
 })
 export class HomeModule { }

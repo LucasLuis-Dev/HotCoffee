@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { SearchComponent } from './search.component';
-import { SmallCardComponent } from '../home/components/small-card/small-card.component';
-import { HomeModule } from '../home/home.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    SearchComponent,
-  ],
-  exports: [
     SearchComponent
   ],
   imports: [
     CommonModule,
-    HomeModule
+    SharedModule
   ]
 })
 export class SearchModule { }

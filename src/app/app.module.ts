@@ -6,25 +6,25 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
-import { SearchModule } from './pages/search/search.module';
-import { NavegationComponent } from './components/navegation/navegation.component';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SmallCardComponent } from './shared/small-card/small-card.component';
+import { SearchModule } from './pages/search/search.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavegationComponent
-  ],
-  exports: [
-    HomeModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HomeModule,
     SearchModule,
+    SharedModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],
