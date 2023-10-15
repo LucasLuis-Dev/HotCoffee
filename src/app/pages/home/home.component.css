@@ -9,7 +9,7 @@ main {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-top: 3rem;
 }
 
@@ -41,7 +41,7 @@ main {
   flex-direction: column;
   width: 100%;
   grid-auto-flow: row;
-  row-gap: 1.4rem;
+  row-gap: 2.3rem;
 }
 
 .small-card {
