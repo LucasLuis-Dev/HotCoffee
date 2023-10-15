@@ -4,6 +4,7 @@ import { SmallCardComponent } from './small-card/small-card.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavegationComponent } from './navegation/navegation.component';
 import { FormsModule } from '@angular/forms';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -11,12 +12,14 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     SmallCardComponent,
     FooterComponent,
-    NavegationComponent
+    NavegationComponent,
+    LoaderComponent
   ],
   exports: [
     SmallCardComponent,
     FooterComponent,
-    NavegationComponent
+    NavegationComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,

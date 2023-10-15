@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 export class SearchComponent implements OnInit {
   searchQuery: string = '';
   searchResults: any[] = [];
+  isLoading: boolean = false;
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
@@ -23,11 +24,12 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-
+      this.isLoading = true;
       this.dataService.fetchData('br,us', '', '' , this.searchQuery).subscribe(
         (news: any) => {
           console.log(news)
           this.searchResults = news.results;
+          this.isLoading = false;
           this.filterAndMapNews();
         },
         error => {

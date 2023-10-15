@@ -10,6 +10,7 @@ main {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  margin-top: 3rem;
 }
 
 .filter-title {
@@ -52,7 +53,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5rem 0;
+  height: 15rem;
 }
 
 .more-news__container {
@@ -125,6 +126,7 @@ main {
     align-items: center;
     gap: 0rem;
     flex-direction: row;
+    margin-top: 0rem;
   }
 
   .filter-title {

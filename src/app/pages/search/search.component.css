@@ -6,10 +6,20 @@
   padding: 4rem 0;
 }
 
+.loader__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+}
+
 
 .search-results__container {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  grid-auto-flow: row;
   row-gap: 1.4rem;
 }
 
@@ -25,5 +35,10 @@
   .search-results__container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .small-card{
+    width: 100%;
+    padding: 1rem;
   }
 }

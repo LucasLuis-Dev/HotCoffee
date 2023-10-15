@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
           this.newsCache = news.results;
 
           this.filterAndMapNews();
+          this.isLoading = false;
         },
         error => {
           console.error(error);

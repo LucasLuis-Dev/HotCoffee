@@ -5,6 +5,10 @@
   </div>
 
 
+  <div *ngIf="isLoading" class="loader__container">
+    <app-loader></app-loader>
+  </div>
+
   <div class="search-results__container">
     <app-small-card class="small-card" *ngFor="let new of searchResults" [new]="new"></app-small-card>
   </div>
