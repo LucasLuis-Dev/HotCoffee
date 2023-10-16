@@ -1,27 +1,47 @@
-# AngularBlog
+<img src="https://cdn.discordapp.com/attachments/965066624556232737/1163568644341645332/Captura_de_tela_de_2023-10-16_16-50-43.png?ex=65400cbe&is=652d97be&hm=e094ea3e8495892fbdfc2b6888a5aafda7860e6f8323bc4c2360f913faa0debc&">
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
+# 💻 Angular blog
 
-## Development server
+Este projeto é uma aplicação web desenvolvida em Angular que proporciona uma experiência dinâmica de leitura de notícias, conectando-se a uma API para obter informações atualizadas em tempo real.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 👨🏽‍💻 Autor
 
-## Code scaffolding
+Lucas Luis de Souza | lucasluisouza@gmail.com
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🎯 Tecnologias Utilizadas:
 
-## Build
+- Angular: Framework front-end poderoso para o desenvolvimento de aplicações web escaláveis e reativas.
+- API de Notícias: Fonte de informações confiável e em tempo real fornecida pela NEWSDATA.io.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ✅ Recursos Principais da Aplicação:
 
-## Running unit tests
+- **Interface Intuitiva**: 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    A interface amigável e organizada facilita a navegação e a leitura de notícias.
+    
+- **Filtragem por Categorias**:
 
-## Running end-to-end tests
+    Os usuários podem personalizar sua experiência filtrando notícias por diversas categorias, incluindo tecnologia, esportes, entretenimento, política, ciência, saúde, mundo e negócios.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Carregamento Dinâmico**:
 
-## Further help
+    Implementação de carregamento dinâmico que carrega mais notícias à medida que os usuários percorrem a lista existente, proporcionando uma navegação contínua e eficiente.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Detecção de Conteúdo Indesejado**:
+
+    Notícias contendo elementos indesejados, são automaticamente detectadas e removidas, garantindo uma leitura mais limpa.
+
+- **Indicador de Carregamento (Loader)**:
+
+    Um indicador visual de carregamento é exibido durante a obtenção de novas notícias, mantendo os usuários informados sobre a atualização do conteúdo.
+
+
+- **Atualizações em Tempo Real**:
+
+    As notícias são obtidas em tempo real por meio de uma API, assegurando que os usuários tenham acesso às últimas informações.
+
+
+
+##  🤔 Como Usar:
+
+Basta acessar o link do deploy do projeto na Vercel: https://blog-lucasluis-dev.vercel.app/
