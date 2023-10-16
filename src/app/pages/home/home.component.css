@@ -150,6 +150,7 @@ main {
     color: white;
     font-weight: 700;
     font-size: 1.7rem;
+    cursor: pointer;
   }
 
   .filter-select > option {

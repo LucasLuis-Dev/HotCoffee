@@ -3,7 +3,7 @@
   flex-direction: column;
 
   gap: 2rem;
-  padding: 4rem 0;
+  padding: 4rem 0 0 0;
 }
 
 .loader__container {
@@ -29,7 +29,7 @@
     flex-direction: column;
 
     gap: 2rem;
-    padding: 4rem 0;
+    padding: 4rem 0 0 0;
   }
 
   .search-results__container {
