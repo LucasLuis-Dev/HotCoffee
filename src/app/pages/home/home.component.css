@@ -81,9 +81,6 @@ main {
   transition: 200ms;
 }
 
-.more-news-button:hover {
-  transform: scale(1.05);
-}
 
 .more-news-button > svg {
   width: 2rem;
@@ -109,15 +106,11 @@ main {
   margin-top: 2rem;
 }
 
-
-
-
 @media screen and (min-width:1200px) {
-
   main {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   .filter__container {
@@ -130,8 +123,7 @@ main {
   }
 
   .filter-title {
-    font-size: 2.7rem;
-    color: #263238;
+    font-size: 2.3rem;
   }
 
   .filter-select {
@@ -149,20 +141,17 @@ main {
     appearance: none;
     color: white;
     font-weight: 700;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     cursor: pointer;
   }
 
-  .filter-select > option {
-    font-size: 1.6rem;
-  }
 
   .small-card__container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     grid-auto-flow: row;
-    row-gap: 3rem;
+    row-gap: 1.5rem;
 
   }
 
@@ -183,7 +172,7 @@ main {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
+    width: 100%;
   }
 
   .more-news-button {
@@ -194,10 +183,11 @@ main {
     justify-content: center;
 
     padding: 1.3rem 1.5rem;
+    width: 100%;
     border: none;
     border-radius: 1rem;
     background-color: #573D06;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: white;
 
@@ -206,7 +196,7 @@ main {
   }
 
   .more-news-button:hover {
-    transform: scale(1.05);
+    background-color: #6e5317;
   }
 
   .more-news-button > svg {
@@ -219,12 +209,12 @@ main {
     text-align: center;
     align-items: center;
     justify-content: center;
-
     padding: 1.3rem 1.5rem;
+    width: 100%;
     border: none;
     border-radius: 1rem;
     background-color: #573D06;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: white;
   }
@@ -232,7 +222,45 @@ main {
   .footer__container {
     margin-top: 2rem;
   }
+}
 
 
+
+
+@media screen and (min-width:1500px) {
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .filter-title {
+    font-size: 2.7rem;
+  }
+
+  .filter-select {
+    font-size: 1.7rem;
+  }
+
+  .more-news__container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .more-news-button {
+   
+    font-size: 1.6rem;
+  }
+
+  .more-news-button > svg {
+    width: 2rem;
+    fill: white;
+  }
+
+  .more-news-information-button {
+    font-size: 1.6rem;
+  }
 
 }

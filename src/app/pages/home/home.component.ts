@@ -72,14 +72,18 @@ export class HomeComponent implements OnInit {
 
     this.newsCache = this.newsCache.map(newItem => {
       if (newItem.description.length > 0) {
-        const firstDotIndex = newItem.description.indexOf('.');
-
-        if (firstDotIndex !== -1) {
-          newItem.description = newItem.description.substring(0, firstDotIndex + 1);
+        newItem.description = newItem.description.substring(0, 120);
+    
+        if (newItem.description.charAt(newItem.description.length - 1) === '.') {
+          
+          newItem.description = newItem.description.slice(0, -1);
         }
+      
+        newItem.description += '...';
       }
       return newItem;
     });
+    
 
 
     this.newsDisplayed = [...this.newsDisplayed, ...this.newsCache];

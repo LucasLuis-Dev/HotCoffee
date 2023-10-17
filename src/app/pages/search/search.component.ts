@@ -47,11 +47,14 @@ export class SearchComponent implements OnInit {
 
       this.searchResults = this.searchResults.map(newItem => {
         if (newItem.description.length > 0) {
-          const secondDotIndex = newItem.description.indexOf('.', newItem.description.indexOf('.') + 1);
-
-          if (secondDotIndex !== -1) {
-            newItem.description = newItem.description.substring(0, secondDotIndex + 1);
+          newItem.description = newItem.description.substring(0, 120);
+      
+          if (newItem.description.charAt(newItem.description.length - 1) === '.') {
+            
+            newItem.description = newItem.description.slice(0, -1);
           }
+        
+          newItem.description += '...';
         }
         return newItem;
       });
