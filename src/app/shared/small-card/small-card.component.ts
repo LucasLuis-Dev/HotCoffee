@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { INew } from 'src/app/interfaces/new.interface';
 
 @Component({
   selector: 'app-small-card',
@@ -8,6 +9,6 @@ import { Component, Input } from '@angular/core';
 export class SmallCardComponent {
 
   @Input()
-  new: any = "";
+  new!: INew;
 
 }

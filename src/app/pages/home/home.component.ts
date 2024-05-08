@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { INew } from 'src/app/interfaces/new.interface';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,8 +9,8 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class HomeComponent implements OnInit {
 
-  newsDisplayed: any[] = [];
-  newsCache: any[] = [];
+  newsDisplayed: INew[] = [];
+  newsCache: INew[] = [];
   page: string = '';
   selectedCategory: string = 'technology';
   isLoading: boolean = false;
@@ -19,12 +20,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     if (this.newsDisplayed.length === 0) {
       this.loadMoreNews('',this.selectedCategory);
-      console.log('requisição feita')
     }
   }
 
   onCategoryChange() {
-    console.log(this.selectedCategory);
     this.newsCache = []
     this.newsDisplayed = []
     this.loadMoreNews('',this.selectedCategory);
@@ -40,7 +39,7 @@ export class HomeComponent implements OnInit {
           this.page = news.nextPage
           this.newsCache = news.results;
 
-          this.filterAndMapNews();
+          this.filterNews();
           this.isLoading = false;
         },
         error => {
@@ -54,7 +53,7 @@ export class HomeComponent implements OnInit {
           this.page = news.nextPage
           this.newsCache = news.results;
 
-          this.filterAndMapNews();
+          this.filterNews();
           this.isLoading = false;
         },
         error => {
@@ -64,24 +63,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  filterAndMapNews() {
+  filterNews() {
     this.newsCache = this.newsCache.filter(newItem => {
-
       return !(newItem.image_url && newItem.image_url.endsWith('.gif'));
-    });
-
-    this.newsCache = this.newsCache.map(newItem => {
-      if (newItem.description.length > 0) {
-        newItem.description = newItem.description.substring(0, 120);
-    
-        if (newItem.description.charAt(newItem.description.length - 1) === '.') {
-          
-          newItem.description = newItem.description.slice(0, -1);
-        }
-      
-        newItem.description += '...';
-      }
-      return newItem;
     });
     
 

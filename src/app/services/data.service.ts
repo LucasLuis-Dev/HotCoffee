@@ -45,8 +45,6 @@ export class DataService {
       return this.http.get(url, { params });
     }
 
-
-
   }
 }
 

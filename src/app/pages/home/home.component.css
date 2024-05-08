@@ -23,7 +23,7 @@ main {
   width: 100%;
   padding: 1.5rem;
   border: none;
-  border-radius: 1rem;
+  border-radius: 2rem;
   background-color: #573D06;
   background-image: url('../../../assets/images/arrow-down-sign-to-navigate.png');
   background-repeat: no-repeat;
@@ -131,7 +131,7 @@ main {
     padding: 1.5rem;
     width: 20rem;
     border: none;
-    border-radius: 1rem;
+    border-radius: 2rem;
     background-color: #573D06;
     background-image: url('../../../assets/images/arrow-down-sign-to-navigate.png');
     background-repeat: no-repeat;
@@ -148,24 +148,16 @@ main {
 
   .small-card__container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
     grid-auto-flow: row;
     row-gap: 1.5rem;
+    column-gap: 1.5rem;
 
   }
 
   .small-card{
     width: 100%;
-    padding: 1rem;
-  }
-
-  .small-card:nth-child(3n) {
-    padding-right: 0;
-  }
-
-  .small-card:nth-child(3n - 2) {
-    padding-left: 0;
   }
 
   .more-news__container {
@@ -185,7 +177,7 @@ main {
     padding: 1.3rem 1.5rem;
     width: 100%;
     border: none;
-    border-radius: 1rem;
+    border-radius: 2rem;
     background-color: #573D06;
     font-size: 1.4rem;
     font-weight: 700;
@@ -212,7 +204,7 @@ main {
     padding: 1.3rem 1.5rem;
     width: 100%;
     border: none;
-    border-radius: 1rem;
+    border-radius: 2rem;
     background-color: #573D06;
     font-size: 1.4rem;
     font-weight: 700;
@@ -250,7 +242,6 @@ main {
   }
 
   .more-news-button {
-   
     font-size: 1.6rem;
   }
 

@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { SmallCardComponent } from './shared/small-card/small-card.component';
 import { SearchModule } from './pages/search/search.module';
 import { SharedModule } from './shared/shared.module';
+import { ShortNewDescriptionPipe } from './pipes/short-new-description.pipe';
+import { PipesModule } from './pipes/pipes.module';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { SharedModule } from './shared/shared.module';
     SearchModule,
     SharedModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

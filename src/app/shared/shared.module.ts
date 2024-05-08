@@ -5,6 +5,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NavegationComponent } from './navegation/navegation.component';
 import { FormsModule } from '@angular/forms';
 import { LoaderComponent } from './loader/loader.component';
+import { ShortNewDescriptionPipe } from '../pipes/short-new-description.pipe';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -15,16 +17,17 @@ import { LoaderComponent } from './loader/loader.component';
     NavegationComponent,
     LoaderComponent
   ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    PipesModule
+  ],
   exports: [
     SmallCardComponent,
     FooterComponent,
     NavegationComponent,
     LoaderComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule
-
-  ]
+  
 })
 export class SharedModule { }

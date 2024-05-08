@@ -16,13 +16,13 @@
 
         <div class="small-card-descriptions">
             <p>
-                {{new.description}}
+                {{new.description | shortNewDescription }}
             </p>
         </div>
 
         <div class="small-card-data__container">
             <p>
-                {{new.pubDate}}
+                {{new.pubDate | date : 'dd/MM/yyyy HH:mm'}}
             </p>
         </div>
     </div>

@@ -34,7 +34,7 @@
 
 
 .header-image__container > img {
-  width: 100%;
+  width: 30rem;
 }
 
 @media screen and (min-width: 1200px) {
