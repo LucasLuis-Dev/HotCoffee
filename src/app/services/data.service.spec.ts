@@ -370,4 +370,42 @@ describe('DataService', () => {
         const mockReq = testingController.expectOne('https://newsdata.io/api/1/news?apikey=pub_3001762768cb972778a02365931bdb255a5eb&country=br&image=1&video=0&category=technology')
         mockReq.flush(Object.values(REQUEST))
     })
+
+    it('should get news by category', () => {
+      const category: string = 'sports';
+      service.getNewsByCategory(category).subscribe({
+        next: (response: IRequestNew) => {
+          expect(response).toBeTruthy();
+        }
+      })
+
+      const mockReq = testingController.expectOne('https://newsdata.io/api/1/news?apikey=pub_3001762768cb972778a02365931bdb255a5eb&country=br&image=1&video=0&category=sports')
+      mockReq.flush(Object.values(REQUEST))
+    })
+
+    it('should get news by next page', () => {
+      const nextPage: string = '12';
+      const category: string = 'sports';
+      service.getNewsByNextPage(category, nextPage).subscribe({
+        next: (response: IRequestNew) => {
+          expect(response).toBeTruthy();
+        }
+      })
+
+      const mockReq = testingController.expectOne('https://newsdata.io/api/1/news?apikey=pub_3001762768cb972778a02365931bdb255a5eb&country=br&image=1&video=0&category=sports&page=12')
+      mockReq.flush(Object.values(REQUEST));
+    })
+
+    it('should get news by search', () => {
+      const query: string = 'Microsoft';
+
+      service.getNewsBySearch(query).subscribe({
+        next: (response: IRequestNew) => {
+          expect(response).toBeTruthy();
+        }
+      })
+
+      const mockReq = testingController.expectOne('https://newsdata.io/api/1/news?apikey=pub_3001762768cb972778a02365931bdb255a5eb&country=br&image=1&video=0&q=Microsoft')
+      mockReq.flush(Object.values(REQUEST));
+    })
 });
