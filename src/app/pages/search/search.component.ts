@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IRequestNew } from 'src/app/interfaces/requestNew.interface';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -15,7 +16,6 @@ export class SearchComponent implements OnInit {
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
-    // Obter o parâmetro 'query' da rota
     this.route.params.subscribe(params => {
       this.searchQuery = params['query'];
 
@@ -25,38 +25,22 @@ export class SearchComponent implements OnInit {
 
   search() {
       this.isLoading = true;
-      this.dataService.fetchData('br,us', '', '' , this.searchQuery).subscribe(
-        (news: any) => {
-          console.log(news)
-          this.searchResults = news.results;
-          this.isLoading = false;
-          this.filterAndMapNews();
+      this.dataService.getNewsBySearch(this.searchQuery).subscribe({
+        next:(data: IRequestNew) => {
+          this.searchResults =  data.results
+          this.filterNews()
+          this.isLoading = false
         },
-        error => {
-          console.error(error);
+        error: (error: Error) => {
+          console.error(error)
         }
-      );
+      })
     }
 
-
-    filterAndMapNews() {
+    filterNews() {
       this.searchResults = this.searchResults.filter(newItem => {
 
         return !(newItem.image_url && newItem.image_url.endsWith('.gif'));
-      });
-
-      this.searchResults = this.searchResults.map(newItem => {
-        if (newItem.description.length > 0) {
-          newItem.description = newItem.description.substring(0, 120);
-      
-          if (newItem.description.charAt(newItem.description.length - 1) === '.') {
-            
-            newItem.description = newItem.description.slice(0, -1);
-          }
-        
-          newItem.description += '...';
-        }
-        return newItem;
       });
     }
 }

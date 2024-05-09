@@ -1,50 +1,60 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { INew } from '../interfaces/new.interface';
+import { IRequestNew } from '../interfaces/requestNew.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private http: HttpClient) { }
 
-  fetchData(country: string, category: string = '', page: string = '', searchQuery: string = '') {
+  private apiUrl: string = "https://newsdata.io/api/1/news"
+  
 
-    if (page != '') {
-      const params = new HttpParams()
-      .set('apikey', 'pub_3001762768cb972778a02365931bdb255a5eb')
-      .set('country', country)
-      .set('category', category)
-      .set('image', 1)
-      .set('video', 0)
-      .set('page', page)
+  constructor(private http: HttpClient) {
+    
+   }
 
-      const url = 'https://newsdata.io/api/1/news';
-      return this.http.get(url, { params });
+  getNews(): Observable<IRequestNew> {
+    const params: HttpParams = new HttpParams()
+    .set('apikey', 'pub_3001762768cb972778a02365931bdb255a5eb')
+    .set('country', 'br')
+    .set('image', 1)
+    .set('video', 0)
+    .set('category', 'technology');
+    return this.http.get<IRequestNew>(this.apiUrl, { params: params })
+  }
 
-    } else if (searchQuery != '') {
+  getNewsByCategory(category: string): Observable<IRequestNew> {
+    const params: HttpParams = new HttpParams()
+    .set('apikey', 'pub_3001762768cb972778a02365931bdb255a5eb')
+    .set('country', 'br')
+    .set('image', 1)
+    .set('video', 0)
+    .set('category', category);
+    return this.http.get<IRequestNew>(this.apiUrl, { params: params })
+  }
 
-      const params = new HttpParams()
-        .set('apikey', 'pub_3001762768cb972778a02365931bdb255a5eb')
-        .set('country', country)
-        .set('image', 1)
-        .set('video', 0)
-        .set('q', searchQuery)
+  getNewsByNextPage(category: string, nextPage: string): Observable<IRequestNew> {
+    const params: HttpParams = new HttpParams()
+    .set('apikey', 'pub_3001762768cb972778a02365931bdb255a5eb')
+    .set('country', 'br')
+    .set('image', 1)
+    .set('video', 0)
+    .set('category', category)
+    .set('page', nextPage);
+    return this.http.get<IRequestNew>(this.apiUrl, { params: params })
+  }
 
-        const url = 'https://newsdata.io/api/1/news';
-        return this.http.get(url, { params });
-
-    } else {
-      const params = new HttpParams()
-      .set('apikey', 'pub_3001762768cb972778a02365931bdb255a5eb')
-      .set('country', country)
-      .set('category', category)
-      .set('image', 1)
-      .set('video', 0);
-
-      const url = 'https://newsdata.io/api/1/news';
-      return this.http.get(url, { params });
-    }
-
+  getNewsBySearch(query: string): Observable<IRequestNew> {
+    const params = new HttpParams()
+    .set('apikey', 'pub_3001762768cb972778a02365931bdb255a5eb')
+    .set('country', 'br')
+    .set('image', 1)
+    .set('video', 0)
+    .set('q', query);
+    return this.http.get<IRequestNew>(this.apiUrl, { params: params })
   }
 }
 

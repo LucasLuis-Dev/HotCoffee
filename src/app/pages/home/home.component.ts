@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { INew } from 'src/app/interfaces/new.interface';
+import { IRequestNew } from 'src/app/interfaces/requestNew.interface';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -11,69 +12,68 @@ export class HomeComponent implements OnInit {
 
   newsDisplayed: INew[] = [];
   newsCache: INew[] = [];
-  page: string = '';
+  nextPage: string = '';
   selectedCategory: string = 'technology';
   isLoading: boolean = false;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    if (this.newsDisplayed.length === 0) {
-      this.loadMoreNews('',this.selectedCategory);
-    }
+    this.loadNews()
+  }
+
+
+  loadNews(): void {
+    this.isLoading = true;
+    this.dataService.getNews().subscribe({
+      next:(data: IRequestNew) => {
+        this.newsCache = data.results;
+        this.nextPage = data.nextPage
+        this.filterNews()
+        this.isLoading = false
+      },
+      error: (error: Error) => {
+        console.error(error)
+      }
+    })
   }
 
   onCategoryChange() {
     this.newsCache = []
     this.newsDisplayed = []
-    this.loadMoreNews('',this.selectedCategory);
-
-  }
-
-  loadMoreNews(page: string = '', category: string) {
     this.isLoading = true;
-    if (page === '') {
-      this.dataService.fetchData('br', category).subscribe(
-        (news: any) => {
-          console.log(news)
-          this.page = news.nextPage
-          this.newsCache = news.results;
-
-          this.filterNews();
-          this.isLoading = false;
-        },
-        error => {
-          console.error(error);
-        }
-      );
-    } else {
-      this.dataService.fetchData('br', category, page).subscribe(
-        (news: any) => {
-          console.log(news)
-          this.page = news.nextPage
-          this.newsCache = news.results;
-
-          this.filterNews();
-          this.isLoading = false;
-        },
-        error => {
-          console.error(error);
-        }
-      );
-    }
+    this.dataService.getNewsByCategory(this.selectedCategory).subscribe({
+      next: (data:IRequestNew) => {
+        this.newsCache = data.results
+        this.nextPage = data.nextPage
+        this.filterNews()
+        this.isLoading = false
+      },
+      error: (error: Error) => {
+        console.error(error)
+      }
+    })
   }
 
   filterNews() {
     this.newsCache = this.newsCache.filter(newItem => {
       return !(newItem.image_url && newItem.image_url.endsWith('.gif'));
     });
-    
-
-
     this.newsDisplayed = [...this.newsDisplayed, ...this.newsCache];
   }
 
   moreNews() {
-    this.loadMoreNews(this.page, this.selectedCategory);
+    this.isLoading = true;
+    this.dataService.getNewsByNextPage(this.selectedCategory, this.nextPage).subscribe({
+      next:(data: IRequestNew) => {
+        this.newsCache =  data.results
+        this.nextPage = data.nextPage
+        this.filterNews()
+        this.isLoading = false
+      },
+      error: (error: Error) => {
+        console.error(error)
+      }
+    })
   }
 }
