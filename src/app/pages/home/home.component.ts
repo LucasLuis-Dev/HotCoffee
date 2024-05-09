@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     this.dataService.getNews().subscribe({
       next:(data: IRequestNew) => {
+        console.log(data)
         this.newsCache = data.results;
         this.nextPage = data.nextPage
         this.filterNews()
