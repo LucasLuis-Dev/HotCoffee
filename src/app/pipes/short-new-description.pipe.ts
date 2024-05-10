@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ShortNewDescriptionPipe implements PipeTransform {
 
-  transform(description: string): string {
+  transform(description: string | null): string {
     if (description != null) {
       description = description.substring(0, 120);
 
