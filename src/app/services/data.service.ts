@@ -12,9 +12,7 @@ export class DataService {
   private apiUrl: string = "https://newsdata.io/api/1/news"
   
 
-  constructor(private http: HttpClient) {
-    
-   }
+  constructor(private http: HttpClient) {}
 
   getNews(): Observable<IRequestNew> {
     const params: HttpParams = new HttpParams()
