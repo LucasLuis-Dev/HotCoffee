@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -11,10 +11,8 @@ import { Router } from '@angular/router';
 export class NavegationComponent {
 
   searchQuery: string = '';
-  newsDisplayed: any[] = [];
 
   constructor(private router: Router){}
-
   search() {
     this.router.navigate(['/search', this.searchQuery]);
     console.log('Pesquisando por:', this.searchQuery);

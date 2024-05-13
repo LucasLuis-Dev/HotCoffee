@@ -3,25 +3,25 @@
   <a href={{new.link}} target="_blank" class="small-card-link__container">
 
     <div class="small-card-image__container">
-        <img src={{new.image_url}} alt="">
+        <img class="small-card-image__container-img" src={{new.image_url}} alt="">
     </div>
 
     <div class="small-card-informations">
 
         <div class="small-card-title">
-            <h2>
+            <h2 class="small-card-title-h2">
                 {{new.title}}
             </h2>
         </div>
 
         <div class="small-card-descriptions">
-            <p>
+            <p class="small-card-descriptions-p">
                 {{new.description | shortNewDescription }}
             </p>
         </div>
 
         <div class="small-card-data__container">
-            <p>
+            <p class="small-card-data__container-p"> 
                 {{new.pubDate | date : 'dd/MM/yyyy HH:mm'}}
             </p>
         </div>

@@ -1,12 +1,10 @@
-import { ComponentFixture, TestBed, flush, waitForAsync } from '@angular/core/testing';
-import { HomeComponent } from './home.component';
-import { DebugElement } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
-import { HeaderComponent } from './components/header/header.component';
-import { of } from 'rxjs';
-import { By } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing"
+import { SearchComponent } from "./search.component";
+import { DebugElement } from "@angular/core";
+import { SharedModule } from "src/app/shared/shared.module";
+import { DataService } from "src/app/services/data.service";
+import { Observable, of } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 
 const mockResponseNews = {
     "status": "success",
@@ -84,78 +82,46 @@ const mockResponseNews = {
       }
     ],
     "nextPage": "1715211308410813630"
+}
+
+class ActivatedRouteMock {
+    queryParams = new Observable( observer => {
+      const urlParams = {
+        type: 'Hello'
+      }
+      
+      observer.next(urlParams);
+      observer.complete();
+    });
   }
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
-  let el: DebugElement;
-  let mockDataService = jasmine.createSpyObj('DataService', ['getNews', 'getNewsByCategory', 'getNewsByNextPage'])
+describe('Search Component', () => {
+    let component: SearchComponent
+    let fixture: ComponentFixture<SearchComponent>;
+    let el: DebugElement;
+    let mockDataService = jasmine.createSpyObj('DataService', ['getNewsBySearch']);
 
-  beforeEach(waitForAsync(
-    () => { 
-        TestBed.configureTestingModule({
-            declarations: [HomeComponent, HeaderComponent],
-            imports:[ FormsModule, SharedModule ],
-            providers: [
-                { provide: DataService, useValue: mockDataService }
-            ]
-
-        }).compileComponents().then(() => {
-            fixture = TestBed.createComponent(HomeComponent);
-            component = fixture.componentInstance;
-            el = fixture.debugElement;
-            mockDataService.getNews.and.returnValue(of(mockResponseNews));
-            fixture.detectChanges();
-        })
-    }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('espero que quando o componente for inciado o atributo newscache esteja com noticias', waitForAsync(() => {
-    mockDataService.getNews.and.returnValue(of(mockResponseNews));
-    component.ngOnInit()
-    expect(component.newsCache.length).toBeGreaterThan(0)
-    expect(mockDataService.getNews).toHaveBeenCalled();
-  }));
-
-  it('espero que quando o metodo de mudar a categoria as notiicas mudem', waitForAsync(() => {
-    const category = 'technology'
-    mockDataService.getNewsByCategory.and.returnValue(of(mockResponseNews));
-    component.onCategoryChange()
-    expect(component.selectedCategory).toEqual(category)
-    expect(component.newsCache.length).toBeGreaterThan(0)
-    expect(mockDataService.getNewsByCategory).toHaveBeenCalled();
-  }));
-
-  it('espero que quando o botão de more news for clicado o mesmo chame a função', waitForAsync(() => {
-    mockDataService.getNewsByNextPage.and.returnValue(of(mockResponseNews));
-    let button = el.query(By.css('.more-news-button'));
-    fixture.detectChanges();
-  
-    button.nativeElement.click()
+    beforeEach(waitForAsync(
+        () => {
+            TestBed.configureTestingModule({
+                declarations: [SearchComponent],
+                imports:[ SharedModule ],
+                providers: [
+                    { provide: DataService, useValue: mockDataService },
+                    { provide: ActivatedRoute, useValue: ActivatedRouteMock }
+                ]
     
-    fixture.detectChanges();
-    expect(component.nextPage.length).toBeGreaterThan(0)
-    expect(component.newsCache.length).toBeGreaterThan(0)
-    expect(mockDataService.getNewsByNextPage).toHaveBeenCalled();
-  }));
+            }).compileComponents().then(() => {
+                fixture = TestBed.createComponent(SearchComponent);
+                component = fixture.componentInstance;
+                el = fixture.debugElement;
+                mockDataService.getNews.and.returnValue(of(mockResponseNews));
+                fixture.detectChanges();
+            })
+        }
+    ))
 
-
-
-  it('espero que quando o usuario selecinar uma categoria de noticias o metodo onCategoryChange seja acionado', waitForAsync (() => {
-    mockDataService.getNewsByCategory.and.returnValue(of(mockResponseNews));
-    let selectOptions = el.queryAll(By.css('.filter-select-option'))
-    fixture.detectChanges()
-    selectOptions[0].nativeElement.click()
-    
-    fixture.detectChanges();
-    expect(component.newsCache.length).toBeGreaterThan(0)
-
-  }));
-
-
-
-});
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+})
