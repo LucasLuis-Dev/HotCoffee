@@ -1,5 +1,3 @@
-<img src="https://cdn.discordapp.com/attachments/965066624556232737/1163568644341645332/Captura_de_tela_de_2023-10-16_16-50-43.png?ex=65400cbe&is=652d97be&hm=e094ea3e8495892fbdfc2b6888a5aafda7860e6f8323bc4c2360f913faa0debc&">
-
 # 💻 Angular blog
 
 Este projeto é uma aplicação web desenvolvida em Angular que proporciona uma experiência dinâmica de leitura de notícias, conectando-se a uma API para obter informações atualizadas em tempo real.
